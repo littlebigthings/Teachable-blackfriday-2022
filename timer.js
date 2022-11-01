@@ -1,36 +1,60 @@
-function offerTimer() {
-    // Set the date we're counting down to
-    let getTimeFrom = document.querySelector("[data-item='timepicker']");
-    let countDownDate = new Date(`${getTimeFrom.textContent}`).getTime();
-    let hourElm = document.querySelector("[data-item='hour']");
-    let minuteElm = document.querySelector("[data-item='minute']");
-    let secondElm = document.querySelector("[data-item='second']");
+class COUNTDOWNTIMER {
+    constructor() {
+        this.timer;
+        // CURRENT DATE AND TIME
+        this.now = new Date();
+        // Element to get date from.
+        this.getTimeFrom = document.querySelector("[data-item='timepicker']");
+        this.hourElm = document.querySelector("[data-item='hour']");
+        this.minuteElm = document.querySelector("[data-item='minute']");
+        this.secondElm = document.querySelector("[data-item='second']");
 
-    // Update the count down every 1 second
-    let x = setInterval(function () {
+        // GET the date of event in format to calculate.
+        this.countDownDate = this.getTimeFrom != undefined && this.getTimeFrom.textContent.length > 0 ? new Date(`${this.getTimeFrom.textContent}`) : null;
 
-        // Get today's date and time
-        let now = new Date().getTime();
+        // USING MOMENT.JS SET LOCAL TIMEZONE - IN THIS CASE "EUROPE/LONDON"
+        // See full list of timezones here - https://gist.github.com/diogocapela/12c6617fc87607d11fd62d2a4f42b02a
+        this.utcOffset = moment.tz(moment.utc(), 'America/New_York').utcOffset()
+        // CALCULATE UTC OFFSET USING MOMENT.JS
+        this.localOffset = moment().utcOffset();
 
-        // Find the distance between now and the count down date
-        let distance = countDownDate - now;
+        this.init();
+    }
 
-        // Time calculations for days, hours, minutes and seconds
-        // let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    init() {
+        this.calculateTimeOffset();
+    }
 
-        // Display the result in the element with id="demo"
-        hourElm.textContent = hours;
-        minuteElm.textContent = minutes;
-        secondElm.textContent = seconds;
+    calculateTimeOffset() {
+        this.offset = this.utcOffset - this.localOffset
 
-        // If the count down is finished, write some text
-        if (distance < 0) {
-            clearInterval(x);
-            // document.getElementById("demo").innerHTML = "EXPIRED";
+        this.compareDate = new Date(this.countDownDate) - this.now.getDate() - (this.offset * 60 * 1000);
+        this.timer = setInterval(() => {
+            this.doCountDown(this.compareDate);
+        }, 1000);
+    }
+
+    doCountDown(toDate) {
+        let dateEntered = new Date(toDate);
+        let now = new Date();
+        let difference = dateEntered.getTime() - now.getTime();
+        if (difference <= 0) {
+            this.hourElm.parentElement.style.display = "none"
+    
+        } else {
+    
+            let seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            let hours = Math.floor(difference / (1000 * 60 * 60));
+            // var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    
+            this.hourElm.textContent = hours;
+            this.minuteElm.textContent = minutes;
+            this.secondElm.textContent = seconds;
+    
         }
-    }, 1000);
+    }
+
 }
-offerTimer();
+
+new COUNTDOWNTIMER;
