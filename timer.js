@@ -1,10 +1,13 @@
 class COUNTDOWNTIMER {
     constructor() {
         this.timer;
+        this.showDay = showDays;
         // CURRENT DATE AND TIME
         this.now = new Date();
         // Element to get date from.
         this.getTimeFrom = document.querySelector("[data-item='timepicker']");
+        this.dayElm = document.querySelector("[data-item='days']");
+        this.dayDot = document.querySelector("[data-item='days-dot']");
         this.hourElm = document.querySelector("[data-item='hour']");
         this.minuteElm = document.querySelector("[data-item='minute']");
         this.secondElm = document.querySelector("[data-item='second']");
@@ -22,7 +25,15 @@ class COUNTDOWNTIMER {
     }
 
     init() {
+        this.hideShowDay();
         this.calculateTimeOffset();
+    }
+
+    hideShowDay() {
+        if (this.showDay != "true") {
+            this.dayElm.parentElement.style.display = "none";
+            this.dayDot.style.display = "none";
+        }
     }
 
     calculateTimeOffset() {
@@ -39,19 +50,49 @@ class COUNTDOWNTIMER {
         let now = new Date();
         let difference = dateEntered.getTime() - now.getTime();
         if (difference <= 0) {
-            this.hourElm.parentElement.style.display = "none"
-    
+            this.dayElm.textContent = "00";
+            this.hourElm.textContent = "00";
+            this.minuteElm.textContent = "00";
+            this.secondElm.textContent = "00"
+
         } else {
-    
             let seconds = Math.floor((difference % (1000 * 60)) / 1000);
             let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-            let hours = Math.floor(difference / (1000 * 60 * 60));
-            // var hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    
-            this.hourElm.textContent = hours;
-            this.minuteElm.textContent = minutes;
-            this.secondElm.textContent = seconds;
-    
+            let hours;
+            let days;
+            if (this.showDay != "true") {
+                // days added as hours
+                hours = Math.floor(difference / (1000 * 60 * 60));
+            }
+            else {
+                // days not added as hours
+                hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                days = Math.floor(hours / 24);
+            }
+            
+            if (this.dayElm != undefined && days > 0){
+                this.dayElm.textContent = days;
+            }else if(this.dayElm != undefined){
+                this.dayElm.textContent = "00";
+            }
+            if (this.hourElm != undefined && hours > 0){
+                this.hourElm.textContent = hours;
+            }
+            else if(this.hourElm != undefined){
+                this.hourElm.textContent = "00";
+            }
+            if (this.minuteElm != undefined && minutes > 0){
+                this.minuteElm.textContent = minutes;
+            }
+            else if(this.minuteElm != undefined){
+                this.minuteElm.textContent = "00";
+            }
+            if (this.secondElm != undefined && seconds > 0){
+                this.secondElm.textContent = seconds;
+            }
+            else if(this.secondElm != undefined){
+                this.secondElm.textContent = "00";
+            }
         }
     }
 
