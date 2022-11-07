@@ -12,16 +12,18 @@ class FADESLIDER {
     }
 
     startScrollListener() {
+        this.thresholdVal = window.screen.width < 768 ? 0.4 : 0.8;
         this.observer = new IntersectionObserver((wrapper) => {
             if (wrapper[0]['isIntersecting'] == true && !this.isPlaying) {
                 this.sliderOne.slick("slickPlay");
+                this.sliderOne.slick("slickNext");
                 this.isPlaying = true;
             }
-            else if(this.isPlaying){
+            else if (this.isPlaying) {
                 this.sliderOne.slick("slickPause");
                 this.isPlaying = false;
             }
-        }, { root: null, threshold: 0.8, rootMargin: '0px' });
+        }, { root: null, threshold: this.thresholdVal, rootMargin: '0px' });
         this.observer.observe(this.$elementToObserve);
     }
 
@@ -30,9 +32,9 @@ class FADESLIDER {
         const $paginationBox = document.querySelector("[bread-crums-box]");
         const $patinationItem = $paginationBox.querySelectorAll("[breadcrum='dot']");
         // clone dots
-        $("[data-item='slider']").on("init",(event, slick)=>{
+        $("[data-item='slider']").on("init", (event, slick) => {
             let numberOfSlides = slick.slideCount;
-            if(numberOfSlides > $patinationItem.length){
+            if (numberOfSlides > $patinationItem.length) {
                 let dotsToAdd = numberOfSlides - $patinationItem.length;
                 for (let i = 0; i < dotsToAdd; i++) {
                     $paginationBox.appendChild($patinationItem[0].cloneNode(true));
@@ -42,7 +44,7 @@ class FADESLIDER {
             this.$newPaginationItems.forEach((item, index) => {
                 item.setAttribute("item-ixd", index)
             })
-            
+
             this.addRemoveActive();
             // adding event listener into the dots, reviews.
             this.$newPaginationItems.forEach((item) => {
@@ -53,21 +55,21 @@ class FADESLIDER {
                 });
             });
         })
-        
+
         this.sliderOne = $(this.$sliderElement).slick({
             dots: false,
             pauseOnFocus: false,
             pauseOnHover: false,
             infinite: true,
             autoplay: false,
-            autoplaySpeed: 1000,
+            autoplaySpeed: 1800,
             arrows: false,
-            speed: 1000,
+            speed: 280,
             fade: true,
             cssEase: "linear",
             appendDots: $paginationBox,
         });
-        
+
         this.sliderOne.on("swipe", (event, slick, direction) => {
             this.addRemoveActive(slick.currentSlide);
         });
