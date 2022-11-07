@@ -11,6 +11,7 @@ class COUNTDOWNTIMER {
         this.hourElm = document.querySelector("[data-item='hour']");
         this.minuteElm = document.querySelector("[data-item='minute']");
         this.secondElm = document.querySelector("[data-item='second']");
+        this.wrapperToHide = document.querySelector("[data-item='count-wrapper']");
 
         // GET the date of event in format to calculate.
         this.countDownDate = this.getTimeFrom != undefined && this.getTimeFrom.textContent.length > 0 ? new Date(`${this.getTimeFrom.textContent}`) : null;
@@ -53,7 +54,9 @@ class COUNTDOWNTIMER {
             this.dayElm.textContent = "00";
             this.hourElm.textContent = "00";
             this.minuteElm.textContent = "00";
-            this.secondElm.textContent = "00"
+            this.secondElm.textContent = "00";
+            this.wrapperToHide.style.display = "none";
+
 
         } else {
             let seconds = Math.floor((difference % (1000 * 60)) / 1000);
@@ -71,24 +74,40 @@ class COUNTDOWNTIMER {
             }
             
             if (this.dayElm != undefined && days > 0){
-                this.dayElm.textContent = days;
+                if(days.length>2){
+                    this.dayElm.textContent = `0${days}`;
+                }else{
+                    this.dayElm.textContent = days;
+                }
             }else if(this.dayElm != undefined){
                 this.dayElm.textContent = "00";
             }
             if (this.hourElm != undefined && hours > 0){
-                this.hourElm.textContent = hours;
+                if(hours.length>2){
+                    this.hourElm.textContent = `0${hours}`;
+                }else{
+                    this.hourElm.textContent = hours;
+                }
             }
             else if(this.hourElm != undefined){
                 this.hourElm.textContent = "00";
             }
             if (this.minuteElm != undefined && minutes > 0){
-                this.minuteElm.textContent = minutes;
+                if(minutes.length>2){
+                    this.minuteElm.textContent = `0${minutes}`;
+                }else{
+                    this.minuteElm.textContent = minutes;
+                }
             }
             else if(this.minuteElm != undefined){
                 this.minuteElm.textContent = "00";
             }
             if (this.secondElm != undefined && seconds > 0){
-                this.secondElm.textContent = seconds;
+                if(seconds.length>2){
+                    this.secondElm.textContent = `0${seconds}`;
+                }else{
+                    this.secondElm.textContent = seconds;
+                }
             }
             else if(this.secondElm != undefined){
                 this.secondElm.textContent = "00";
