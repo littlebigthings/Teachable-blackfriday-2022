@@ -1,6 +1,6 @@
 const domains = {
     client: {
-        production: 'https://cdn-push.littlebigthings.dev/',
+        production: 'https://bf.littlebigthings.dev/',
         staging: 'https://teachables-black-friday-2022.webflow.io/'
     },
     cdn: {
