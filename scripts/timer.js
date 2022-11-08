@@ -16,7 +16,7 @@ class COUNTDOWNTIMER {
         // GET the date of event in format to calculate.
         this.countDownDate = this.getTimeFrom != undefined && this.getTimeFrom.textContent.length > 0 ? new Date(`${this.getTimeFrom.textContent}`) : null;
 
-        // USING MOMENT.JS SET LOCAL TIMEZONE - IN THIS CASE "EUROPE/LONDON"
+        // USING MOMENT.JS SET LOCAL TIMEZONE - IN THIS CASE "America/New_York"
         // See full list of timezones here - https://gist.github.com/diogocapela/12c6617fc87607d11fd62d2a4f42b02a
         this.utcOffset = moment.tz(moment.utc(), 'America/New_York').utcOffset()
         // CALCULATE UTC OFFSET USING MOMENT.JS
