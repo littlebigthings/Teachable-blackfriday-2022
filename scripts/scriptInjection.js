@@ -4,7 +4,7 @@ const domains = {
         staging: 'https://teachables-black-friday-2022.webflow.io/'
     },
     cdn: {
-        production: 'https://blackfriday-2022-main.littlebigthings.dev',
+        production: 'https://teachable-bf-2022-master.littlebigthings.dev',
         staging: 'https://teachable-bf-2022-staging.littlebigthings.dev',
         // keep localstorage "devLocal: as the url" to develop in local for staging;
     },
@@ -19,18 +19,18 @@ const scriptMap = {
     production: {
         '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js'],
         // basic monthly page
-        '(\/pro\/)': ['slider.js'],
+        '(\/pro)$': ['slider.js'],
         // Basic annual page
-        '(\/pro-annual\/)': ['slider.js'],
+        '(\/pro-annual)$': ['slider.js'],
         // scripts goes in all pages.
         'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js',],
     },
     staging: {
         '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js'],
         // basic monthly page
-        '(\/pro\/)': ['slider.js'],
+        '(\/pro)$': ['slider.js'],
         // Basic annual page
-        '(\/pro-annual\/)': ['slider.js'],
+        '(\/pro-annual)$': ['slider.js'],
         // scripts goes in all pages.
         'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js',],
     },
