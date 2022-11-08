@@ -1,7 +1,7 @@
 const domains = {
     client: {
         production: 'https://bf.littlebigthings.dev/',
-        staging: 'https://teachables-black-friday-2022.webflow.io/'
+        staging: 'https://teachable-black-friday-2022.webflow.io/'
     },
     cdn: {
         production: 'https://teachable-bf-2022-master.littlebigthings.dev',
