@@ -26,7 +26,7 @@ const scriptMap = {
         'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js',],
     },
     staging: {
-        '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'test.js'],
+        '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js',],
         // basic monthly page
         '(\/pro)$': ['slider.js'],
         // Basic annual page
