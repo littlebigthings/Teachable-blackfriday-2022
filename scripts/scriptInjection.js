@@ -23,7 +23,7 @@ const scriptMap = {
         // Basic annual page
         '(\/pro-annual)$': ['slider.js'],
         // scripts goes in all pages.
-        'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js',],
+        'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js'],
     },
     staging: {
         '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js',],
