@@ -67,14 +67,14 @@ class COUNTDOWNTIMER {
                 // days added as hours
                 hours = Math.floor(difference / (1000 * 60 * 60));
             }
-            else {
+            else if(this.showDay == "true") {
                 // days not added as hours
                 hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                days = Math.floor(hours / 24);
+                days = Math.floor(Math.floor(difference / (1000 * 60 * 60)) / 24);
             }
             
             if (this.dayElm != undefined && days > 0){
-                if(days.length>2){
+                if(days.toString().length<2){
                     this.dayElm.textContent = `0${days}`;
                 }else{
                     this.dayElm.textContent = days;
@@ -83,7 +83,7 @@ class COUNTDOWNTIMER {
                 this.dayElm.textContent = "00";
             }
             if (this.hourElm != undefined && hours > 0){
-                if(hours.length>2){
+                if(hours.toString().length<2){
                     this.hourElm.textContent = `0${hours}`;
                 }else{
                     this.hourElm.textContent = hours;
@@ -93,7 +93,7 @@ class COUNTDOWNTIMER {
                 this.hourElm.textContent = "00";
             }
             if (this.minuteElm != undefined && minutes > 0){
-                if(minutes.length>2){
+                if(minutes.toString().length<2){
                     this.minuteElm.textContent = `0${minutes}`;
                 }else{
                     this.minuteElm.textContent = minutes;
@@ -103,7 +103,7 @@ class COUNTDOWNTIMER {
                 this.minuteElm.textContent = "00";
             }
             if (this.secondElm != undefined && seconds > 0){
-                if(seconds.length>2){
+                if(seconds.toString().length<2){
                     this.secondElm.textContent = `0${seconds}`;
                 }else{
                     this.secondElm.textContent = seconds;
