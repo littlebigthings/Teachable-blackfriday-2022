@@ -37,11 +37,11 @@ const scriptMap = {
     local: {
         '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js'],
         // basic monthly page
-        '(\/pro\/)': ['slider.js'],
+        '(\/pro)$': ['slider.js'],
         // Basic annual page
-        '(\/pro-annual\/)': ['slider.js'],
+        '(\/pro-annual)$': ['slider.js'],
         // scripts goes in all pages.
-        'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js',],
+        'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js', 'optin-monster.js'],
     }
 
 }
