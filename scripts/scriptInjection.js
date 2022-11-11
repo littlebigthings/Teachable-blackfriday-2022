@@ -2,7 +2,7 @@ const domains = {
     client: {
         production: 'https://bf.littlebigthings.dev/',
         // staging: 'https://teachable-black-friday-2022.webflow.io/'
-        staging: 'https://teachables-black-friday-20-22.webflow.io/'
+        staging: 'https://teachable-black-friday-2022.webflow.io/'
     },
     cdn: {
         production: 'https://teachable-bf-2022-master.littlebigthings.dev',
@@ -32,7 +32,7 @@ const scriptMap = {
         '(\/pro)$': ['slider.js'],
         // Basic annual page
         '(\/pro-annual)$': ['slider.js'],
-        '(\/home-a-b-testing)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js'],
+        // '(\/home-a-b-testing)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js'],
         // scripts goes in all pages.
         'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js'],
     },
