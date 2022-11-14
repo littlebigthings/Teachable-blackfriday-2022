@@ -62,7 +62,7 @@ class FADESLIDER {
             pauseOnHover: false,
             infinite: true,
             autoplay: false,
-            autoplaySpeed: 1800,
+            autoplaySpeed: 4000,
             arrows: false,
             speed: 280,
             fade: true,
