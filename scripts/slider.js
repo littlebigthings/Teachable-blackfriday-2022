@@ -16,7 +16,7 @@ class FADESLIDER {
         this.observer = new IntersectionObserver((wrapper) => {
             if (wrapper[0]['isIntersecting'] == true && !this.isPlaying) {
                 this.sliderOne.slick("slickPlay");
-                this.sliderOne.slick("slickNext");
+                // this.sliderOne.slick("slickNext");
                 this.isPlaying = true;
             }
             else if (this.isPlaying) {
