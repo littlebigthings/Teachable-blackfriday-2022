@@ -16,7 +16,7 @@ $('a').each(function() {
     if(href && params // 👈 null and undefined check
     && Object.keys(params).length != 0
     && Object.getPrototypeOf(params) === Object.prototype
-    && href.indexOf('#') < 0 && !regexCheck.test(href)){
+    && (href.indexOf('#') < 0  || href.indexOf('#') > 0 )&& !regexCheck.test(href)){
             const url = new URL(href);
             const linkQueryString = new URLSearchParams(url.search);
             const linkParams = Object.fromEntries(linkQueryString.entries());
@@ -26,7 +26,7 @@ $('a').each(function() {
                 ...linkParams
             }
             // update link
-            let newLink = "https://" + url.host + url.pathname;
+            let newLink = "https://" + url.host + url.pathname + url.hash;
             newLink = new URL(newLink);
             for (const property in updatedParams) {
                 newLink.searchParams.set(property, updatedParams[property]);

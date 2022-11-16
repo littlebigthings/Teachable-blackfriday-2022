@@ -1,7 +1,8 @@
 const domains = {
     client: {
-        production: 'https://bf.littlebigthings.dev/',
-        staging: 'https://teachables-black-friday-2022.webflow.io/'
+        production: 'https://blackfriday.teachable.com/',
+        // staging: 'https://teachable-black-friday-2022.webflow.io/'
+        staging: 'https://teachable-black-friday-2022.webflow.io/'
     },
     cdn: {
         production: 'https://teachable-bf-2022-master.littlebigthings.dev',
@@ -17,31 +18,41 @@ const domains = {
 
 const scriptMap = {
     production: {
-        '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js'],
+        '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'radioswitch.js'],
         // basic monthly page
         '(\/pro)$': ['slider.js'],
         // Basic annual page
         '(\/pro-annual)$': ['slider.js'],
+        // scripts goes in A-b testing pages.
+        '(\/b)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'optin-monster.js', 'radioswitch.js'],
         // scripts goes in all pages.
         'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js'],
     },
     staging: {
-        '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js',],
+        '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'radioswitch.js'],
         // basic monthly page
         '(\/pro)$': ['slider.js'],
         // Basic annual page
         '(\/pro-annual)$': ['slider.js'],
+        // scripts goes in optin monster page.
+        '(\/b)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'optin-monster.js', 'radioswitch.js'],
+        // scripts goes in optin monster testing page.
+        '(\/home-optin-monster-test)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'optin-monster.js', 'radioswitch.js'],
         // scripts goes in all pages.
-        'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js',],
+        'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js'],
     },
     local: {
-        '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js'],
+        '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'radioswitch.js'],
         // basic monthly page
-        '(\/pro\/)': ['slider.js'],
+        '(\/pro)$': ['slider.js'],
         // Basic annual page
-        '(\/pro-annual\/)': ['slider.js'],
+        '(\/pro-annual)$': ['slider.js'],
+        // scripts goes in A-b testing pages.
+        '(\/b)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'optin-monster.js', 'radioswitch.js'],
+        // scripts goes in optin monster testing page.
+        '(\/home-optin-monster-test)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'optin-monster.js', 'radioswitch.js'],
         // scripts goes in all pages.
-        'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js',],
+        'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js'],
     }
 
 }
@@ -138,7 +149,7 @@ class CdnInject {
                 
                 this.injectScript(scriptToLoad)
                     .then((scriptToLoad) => {
-                        console.log('Script loaded! ', scriptToLoad);
+                        // console.log('Script loaded! ', scriptToLoad);
                     }).catch(error => {
                         // console.error(error);
                     });
