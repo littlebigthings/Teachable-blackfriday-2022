@@ -34,8 +34,10 @@ const scriptMap = {
         '(\/pro)$': ['slider.js'],
         // Basic annual page
         '(\/pro-annual)$': ['slider.js'],
-        // scripts goes in A-b testing pages.
+        // scripts goes in optin monster page.
         '(\/b)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'optin-monster.js', 'radioswitch.js'],
+        // scripts goes in optin monster testing page.
+        '(\/home-optin-monster-test)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'optin-monster.js', 'radioswitch.js'],
         // scripts goes in all pages.
         'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js'],
     },
@@ -47,6 +49,8 @@ const scriptMap = {
         '(\/pro-annual)$': ['slider.js'],
         // scripts goes in A-b testing pages.
         '(\/b)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'optin-monster.js', 'radioswitch.js'],
+        // scripts goes in optin monster testing page.
+        '(\/home-optin-monster-test)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'optin-monster.js', 'radioswitch.js'],
         // scripts goes in all pages.
         'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js'],
     }
