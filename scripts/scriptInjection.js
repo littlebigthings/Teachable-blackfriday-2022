@@ -1,6 +1,6 @@
 const domains = {
     client: {
-        production: 'https://bf.littlebigthings.dev/',
+        production: 'https://blackfriday.teachable.com/',
         // staging: 'https://teachable-black-friday-2022.webflow.io/'
         staging: 'https://teachable-black-friday-2022.webflow.io/'
     },
@@ -149,7 +149,7 @@ class CdnInject {
                 
                 this.injectScript(scriptToLoad)
                     .then((scriptToLoad) => {
-                        console.log('Script loaded! ', scriptToLoad);
+                        // console.log('Script loaded! ', scriptToLoad);
                     }).catch(error => {
                         // console.error(error);
                     });
