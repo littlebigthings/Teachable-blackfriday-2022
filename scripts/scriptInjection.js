@@ -18,35 +18,37 @@ const domains = {
 
 const scriptMap = {
     production: {
-        '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js'],
+        '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'radioswitch.js'],
         // basic monthly page
         '(\/pro)$': ['slider.js'],
         // Basic annual page
         '(\/pro-annual)$': ['slider.js'],
+        // scripts goes in A-b testing pages.
+        '(\/b)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'optin-monster.js', 'radioswitch.js'],
         // scripts goes in all pages.
         'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js'],
     },
     staging: {
-        '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js',],
+        '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'radioswitch.js'],
         // basic monthly page
         '(\/pro)$': ['slider.js'],
         // Basic annual page
         '(\/pro-annual)$': ['slider.js'],
         // scripts goes in A-b testing pages.
-        '(\/b)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'optin-monster.js'],
+        '(\/b)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'optin-monster.js', 'radioswitch.js'],
         // scripts goes in all pages.
         'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js'],
     },
     local: {
-        '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js'],
+        '^(\/)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'radioswitch.js'],
         // basic monthly page
         '(\/pro)$': ['slider.js'],
         // Basic annual page
         '(\/pro-annual)$': ['slider.js'],
         // scripts goes in A-b testing pages.
-        '(\/b)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'optin-monster.js'],
+        '(\/b)$': ['feature-dropdown.js', 'priceChange.js', 'slider.js', 'optin-monster.js', 'radioswitch.js'],
         // scripts goes in all pages.
-        'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js',],
+        'all': ['queryforwarding.js', 'timer.js', 'animate-faq.js'],
     }
 
 }
